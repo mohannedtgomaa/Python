@@ -1,0 +1,113 @@
+'''
+This our Munch App
+MVP
+V0.1
+By Mo Gomaa
+This help you plan your dinner menu from you list of favurote dishes
+and create a shopping list of ingredients of required
+
+'''
+#-------------Imports----------------
+
+from random import choice 
+
+#----------A. Functions---------------
+
+#A.1 Choose Dishes Function
+
+def choose_dishes(days):
+    while len(My_Menu) < int(days):
+        Chosen_Dish = choice(Fav_Dishes)
+        if Chosen_Dish not in My_Menu:
+            My_Menu.append(Chosen_Dish)
+    print("Done!,Here is your menu...")
+    print()
+    for dish in My_Menu:
+        print (dish)
+    print()
+    print("Out all of these dishes, my favourite has to be..." + choice(My_Menu))
+
+
+'''
+    1. Choose a random dish from fav_dishes (Done?)
+    2. Check dish hasn't been chosen. If not, add to my_menu (Done)
+    3. Repeat until we have the required number of dishes in my_menu (Done)
+    
+'''
+    
+
+#A.2 Build a shopping list fucntion
+
+def buildshoppinglist():
+    My_shoppinglist = []
+    if 'Pizza' in My_Menu:
+        My_shoppinglist.append(Pizza)
+    if 'Buger' in My_Menu:
+        My_shoppinglist.append(Buger)
+    if 'Hot Dog' in My_Menu:
+        My_shoppinglist.append(HotDog)    
+    if 'Fried Chicken' in My_Menu:
+        My_shoppinglist.append(FriedChicken)   
+    if 'Tacos' in My_Menu:
+        My_shoppinglist.append(Tacos) 
+    if 'Mix Grill' in My_Menu:
+        My_shoppinglist.append(MixGrill) 
+    if 'Baked Salmon' in My_Menu:
+        My_shoppinglist.append(BakedSalmon)
+    print()
+    for dish in My_shoppinglist:
+        for ingredient in dish:
+            print(ingredient)
+    print()
+    print("Enjoy your meals")
+
+       
+#-----------B. Our Lists--------------
+
+#B.1 Fav. dish list
+Fav_Dishes = ['Pizza','Buger','Hot Dog', 'Fried Chicken', 'Tacos','Mix Grill', 'Baked Salmon']
+
+#B.1 Dinner Menu List
+My_Menu = []
+
+#B.3 Dish ingredient
+Pizza = ['Sauce', 'cheese', 'dow']
+
+Buger = ['Bun', 'Patty']
+
+HotDog = ['Bun', 'Hotdog']
+
+FriedChicken = ['Chicken', 'flower', 'butter milk']
+
+Tacos = ['Torilla', 'steak','salsa']
+
+MixGrill = ['Chicken', "Meat"]
+
+BakedSalmon = ["salmon", 'potato','cream']
+
+
+#1. How many days to plan for?
+
+print('Hello, I am Munch and I will help to plan your Dinner Menu...')
+
+answer = input('How many days you like to plan? ')
+
+print('Ok, I am going to plan ' + answer + ' day(s). I will pick them from your favourite dishes')
+
+#2. Choose Dishes,  based on number of days
+
+choose_dishes(answer)
+
+#3. Built an shopping list?(if requried)
+
+answer = input('Would you like me to create your shopping list?...(Y/N) ')
+
+print()
+
+if answer == 'y':
+    #call build shopping list
+    print()
+    buildshoppinglist()
+else: 
+    print('You got it, bye for now :)')
+    
