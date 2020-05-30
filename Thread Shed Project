@@ -105,6 +105,10 @@ green&white;,;09/15/17,   Gail Phelps   ;,;$30.52
 ;,; green&white&blue   ;,; 09/15/17 , Myrtle Morris 
 ;,;   $22.66   ;,; green&white&blue;,;09/15/17"""
 
+#----------------Overall Task------------------------
+#To support Thread shed clean up there sales data 
+
+
 #--------------------Task2----------------------------
 # Start coding below!
 
@@ -123,7 +127,7 @@ print(daily_transactions) #print the new list
 daily_transactions_split =[]  #created a new list to store splitted transactions.
 
 #--------------------task6----------------------------
-for index in range(len(daily_transactions)-1):
+for index in range(len(daily_transactions)):
   step1 = daily_transactions[index]
   split = step1.split('-')
   daily_transactions_split.append(split) #create a for loop to itreate through the list using index number, store as a string, split it at '-' and append it to my desried list
@@ -135,7 +139,7 @@ print(daily_transactions_split) #print output task6
 #--------------------task8----------------------------
 transactions_clean=[] #create a new list to store cleaned up transactions after removing white space
 
-for index in range(len(daily_transactions_split)-1):
+for index in range(len(daily_transactions_split)):
   step1 = daily_transactions_split[index]
   for i in  range(len(step1)-1): 
     step2 = step1[i]
@@ -183,21 +187,64 @@ print(thread_sold)#print output
 total_sales=0 #create a new variable to sum up sales
 #--------------------task14----------------------------
 
+#create a for loop to itreate by index 
+for index in range(len(sales)):
+  string = sales[index].strip('$')
+#use strip to remove "$"
+  total_sales +=float(string)
+#change data type to float and add to total sales variable  
 
+#--------------------task15----------------------------
+print('------------------------------------------------')
+print(total_sales)#print output 
+#--------------------task16----------------------------
+print('------------------------------------------------')
+print(thread_sold)#print output
+#--------------------task17----------------------------
+thread_sold_split = [] #create an empty list to append againts
+#--------------------task18----------------------------
+#create a for loop to itreate through my orginial list by index
+for index in range(len(thread_sold)):
+#create if statment to check if the string at the index has a '&' or not
+  if '&' in thread_sold[index]:
+#if Yes split at '&' and then append to new list 
+    split = thread_sold[index].split('&')
+    for i in split:
+#created a for loop to itreate in the smaller list created by my split function
+      thread_sold_split.append(i)
+# if not append directly to new list 
+  else:
+    thread_sold_split.append(thread_sold[index])
+print('------------------------------------------------')
+print(thread_sold_split)
+#--------------------task19----------------------------
+#create color counter function
+def color_count(color):
+  counter = 0
+#create variable to store counts
+#create a for loop to itreate through my previous list to count the color inputed in my function
+  for i in thread_sold_split:
+    if i == color:
+      counter+=1
+  return counter   
+#return count of the color inputed in my function
+#--------------------task20----------------------------
+print('------------------------------------------------')
+print(color_count('white')) #test my function
 
+#--------------------task21----------------------------
 
+colors = ['red','yellow','green','white','black','blue','purple']
 
+#--------------------task22----------------------------
 
+#create a for loop to itreate through colors list
+for color in colors:
+#replace color in color count function
+  print ('Thread Shed sold {count} threads of {col} thread today.'.format(count=str((color_count(color))),col=color))
+#using .format to create a count to print out count and color 
 
-
-
-
-
-
-
-
-
-
+#--------------------End----------------------------
 
 
 
