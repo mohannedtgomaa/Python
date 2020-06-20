@@ -1,0 +1,60 @@
+#Intro: In this project, you will process some data from a group of friends playing scrabble. You will use dictionaries to organize players, words, and points.
+
+letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+points = [1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 4, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10]
+#-------------------Q1----------------------------
+print('-------------------Q1----------------------------')
+#combine two lists to create a dictionary, using list comprehension. 
+letter_to_points = {letters:points for letters, points in zip(letters,points)} #list comprehension and zi
+print(letter_to_points) #check my create dictionary
+
+#-------------------Q2----------------------------
+print('-------------------Q2----------------------------')
+#add item to teh list
+letter_to_points[''] =0 
+print(letter_to_points) #check my create dictionary
+
+#-------------------Q3-to-Q6----------------------------
+print('-------------------Q3-to-Q6--------------------------')
+#create a function that will take a word as a parameter and retrun a score for each letter as per the disctionaory 'letter_to_points'
+def score_word(word):#create a function score_word 
+  point_total = 0 #create empty variable score
+  for letter in word: #itreate through the word
+    point_total +=  letter_to_points.get(letter) #look for letters in the word in the dictionary and add its value to the variable score 
+  return (point_total)#return score 
+print(score_word('ANNA'))#checker 
+
+#-------------------Q7-to-Q8----------------------------
+print('-------------------Q7-to-Q8--------------------------')
+
+brownie_points = score_word('BROWNIE')
+print(brownie_points)
+
+#--------------------Q9-to-Q10--------------------------
+print('--------------------Q9-to-Q10------------------------')
+players = ['player1','wordNerd','Lexi Con','Prof Reader']
+words= [['BLUE', 'TENNIS','EXIT'],['EARTH','EYES','MACHINE'],['ERASER','BELLY','HUSKY'],['ZAP','COMA','PERIOD']]
+player_to_words = {players:words for players, 
+words in zip(players,words)}
+print(player_to_words)
+
+player_to_points={}
+
+#-------------------Q11----------------------------
+print('-------------------Q11-to-Q14------------------------')
+print(player_to_words.items())
+print(player_to_words.values())
+
+for player, words in player_to_words.items():#itreate through dict using items method to extract keys:values
+  player_points = 0 #create a variable and set to 0
+  #print(players) CHECK POINT
+  for word in words:
+    player_points += score_word(word) 
+    #print(score)    
+  player_to_points[player] = player_points
+
+#nested loop that itreate through the list of items, and extract words and pass it to score_word() 
+print(player_to_points)
+
+
+
