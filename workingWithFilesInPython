@@ -1,0 +1,75 @@
+#---------------------Q1----------------------------
+#importing csv library
+import csv
+#---------------------Q2----------------------------
+print('-------------------Q2--------------------------')
+#Create a users list with compromised passwords
+compromised_users=[]
+#-------------------Q3-to-Q7---------------------
+print('-------------------Q3-to-Q7---------------------')
+with open("passwords.csv") as password_file:
+  #open file
+  password_csv= csv.DictReader(password_file)
+  #save file to varibale password_csv
+  for row in password_csv:
+    password_row = row
+    #loop to save each row to temp variable password_row
+    print(password_row['Username'])
+    #print out list of compromised Username
+    compromised_users.append(password_row['Username'])
+    #added list of compromised Username to our list     compromised_users
+#-------------------Q8-to-Q11---------------------
+print('-------------------Q8-to-Q11--------------------')
+#Open New file in write mode
+with open('compromised_users.txt','w') as compromised_user_file:
+  #itreate through compromised_users list and write user to new txt file 
+  for user in compromised_users:
+    compromised_user_file.write(user)
+#-------------------Q12-to-Q15---------------------
+print('-------------------Q12-to-Q15-------------------')
+import json
+
+with open('boss_message.json','w') as boss_message:
+  #create a dictionary with mission status
+  boss_message_dict = {"recipient":"The Boss","message":"Mission Success"}
+  #write to json object
+  json.dump(boss_message_dict,boss_message)
+
+#-------------------Q16-to-Q1---------------------
+print('-------------------Q16-to-Q15-------------------')
+
+with open("new_passwords.csv",'w') as new_passwords_obj:
+  slash_null_sig= """
+   _  _     ___   __  ____             
+/ )( \   / __) /  \(_  _)            
+) \/ (  ( (_ \(  O ) )(              
+\____/   \___/ \__/ (__)             
+ _  _   __    ___  __ _  ____  ____  
+/ )( \ / _\  / __)(  / )(  __)(    \ 
+) __ (/    \( (__  )  (  ) _)  ) D ( 
+\_)(_/\_/\_/ \___)(__\_)(____)(____/ 
+        ____  __     __   ____  _  _ 
+ ___   / ___)(  )   / _\ / ___)/ )( \
+(___)  \___ \/ (_/\/    \\___ \) __ (
+       (____/\____/\_/\_/(____/\_)(_/
+ __ _  _  _  __    __                
+(  ( \/ )( \(  )  (  )               
+/    /) \/ (/ (_/\/ (_/\             
+\_)__)\____/\____/\____/
+
+"""
+  new_passwords_obj.write(slash_null_sig)
+
+with open('passwords.csv','w') as password:
+    password.write(slash_null_sig)
+
+with open('passwords.csv','r') as password: 
+    check= password.read()
+    print(check)
+
+
+
+
+
+
+
